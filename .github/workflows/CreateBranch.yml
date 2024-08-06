@@ -37,15 +37,19 @@ jobs:
           git commit -m "Update Helm chart with new image tag ${{ env.COMMIT_ID }}"
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} ${{ env.BRANCH_NAME }}
 
-      - name: Fetch remote branches
-        run: git fetch origin
-
       - name: Wait for branch to be available
         run: sleep 3
+
+      - name: Fetch remote branches
+        run: git fetch origin
 
       - name: Verify branch exists
         run: |
           git branch -r | grep "origin/${{ env.BRANCH_NAME }}"
+
+      - name: Verify changes in branch
+        run: |
+          git diff origin/main...${{ env.BRANCH_NAME }}
 
       - name: Create Pull Request for Helm chart update
         uses: peter-evans/create-pull-request@v4
