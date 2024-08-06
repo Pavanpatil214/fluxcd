@@ -75,3 +75,12 @@ jobs:
         run: |
           PR_NUMBER=$(gh pr list --head ${{ env.BRANCH_NAME }} --json number --jq '.[0].number')
           gh pr merge $PR_NUMBER --squash --admin
+
+
+      - name: Delete Branch using GitHub CLI
+        if: success()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api -X DELETE "repos/${{ github.repository }}/git/refs/heads/${{ env.BRANCH_NAME }}"
+
