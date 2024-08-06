@@ -41,6 +41,11 @@ jobs:
         run: |
           git branch -r
 
+      - name: Ensure branch is pushed
+        run: |
+          git fetch origin
+          git branch -r | grep "origin/${{ env.BRANCH_NAME }}"
+
       - name: Create Pull Request for Helm chart update
         uses: peter-evans/create-pull-request@v4
         with:
