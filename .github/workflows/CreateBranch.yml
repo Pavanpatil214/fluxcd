@@ -37,6 +37,9 @@ jobs:
           git commit -m "Update Helm chart with new image tag ${{ env.COMMIT_ID }}"
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} ${{ env.BRANCH_NAME }}
 
+      - name: Wait for branch to be available
+        run: sleep 10
+
       - name: Verify branch exists
         run: |
           git branch -r
