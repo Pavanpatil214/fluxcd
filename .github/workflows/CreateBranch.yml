@@ -42,7 +42,7 @@ jobs:
 
       - name: Verify branch exists
         run: |
-          git branch -r
+          git branch -r | grep "origin/${{ env.BRANCH_NAME }}"
 
       - name: Create Pull Request for Helm chart update
         uses: peter-evans/create-pull-request@v4
