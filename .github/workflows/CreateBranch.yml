@@ -63,11 +63,19 @@ jobs:
           git status
 
       - name: Create Pull Request for Helm chart update
+        id: create_pr
         uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           title: 'Update Helm chart with new image tag'
           body: 'Automated PR to update Helm chart with new image tag ${{ env.COMMIT_ID }}'
           base: main
-          branch: ${{ env.BRANCH_NAME }}
+          head: ${{ env.BRANCH_NAME }}
           commit-message: 'Update Helm chart values'
+
+      - name: Merge Pull Request
+        uses: peter-evans/merge-pull-request@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pull-request: ${{ steps.create_pr.outputs.pull-request-number }}
+          merge-method: squash
