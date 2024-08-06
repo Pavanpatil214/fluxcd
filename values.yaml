@@ -1,4 +1,4 @@
 image:
   repository: "cringbltgbleastus.azurecr.io/alm-ing-blt-likelihood-processor"
   pullPolicy: Always
-  tag: Snapshot-202408050618
+  tag: 20240806_115140
