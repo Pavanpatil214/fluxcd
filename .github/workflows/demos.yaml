@@ -67,3 +67,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh pr create --title "Update Helm chart with new image tag" --body "Automated PR to update Helm chart with new image tag ${{ env.COMMIT_ID }}" --base main --head ${{ env.BRANCH_NAME }}
+
+
+      - name: Merge Pull Request using GitHub CLI
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_NUMBER=$(gh pr list --head ${{ env.BRANCH_NAME }} --json number --jq '.[0].number')
+          gh pr merge $PR_NUMBER --squash --admin
