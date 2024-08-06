@@ -3,6 +3,10 @@ name: Update Tag Branch Create
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
+
 jobs:
   update-chart:
     runs-on: ubuntu-latest
