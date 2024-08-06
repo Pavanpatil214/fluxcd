@@ -9,7 +9,6 @@ permissions:
 
 
 jobs:
-  createPullRequest:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
