@@ -48,7 +48,7 @@ jobs:
         run: sleep 3
 
       - name: Pull latest changes
-        run: git pull origin ${{ github.ref_name }}
+        run: git pull origin ${{ env.BRANCH_NAME }}
 
       - name: Verify branch exists
         run: |
