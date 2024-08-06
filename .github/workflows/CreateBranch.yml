@@ -35,7 +35,7 @@ jobs:
           git config user.email "github-actions@github.com"
           git add ./values.yaml
           git commit -m "Update Helm chart with new image tag ${{ env.COMMIT_ID }}"
-          git push --set-upstream origin ${{ env.BRANCH_NAME }}
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} ${{ env.BRANCH_NAME }}
 
       - name: Verify branch exists
         run: |
