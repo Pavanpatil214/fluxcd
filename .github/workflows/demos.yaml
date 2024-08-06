@@ -61,13 +61,3 @@ jobs:
         run: |
           git branch
           git status
-
-      - name: Create Pull Request for Helm chart update
-        uses: peter-evans/create-pull-request@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          title: 'Update Helm chart with new image tag'
-          body: 'Automated PR to update Helm chart with new image tag ${{ env.COMMIT_ID }}'
-          base: main
-          branch: ${{ env.BRANCH_NAME }}
-          commit-message: 'Update Helm chart values'
