@@ -20,15 +20,16 @@ jobs:
         run: |
           BRANCH_NAME="update-helm-chart-${{ env.COMMIT_ID }}"
           git checkout -b $BRANCH_NAME
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
 
       - name: Update Helm chart values
         run: |
-          sed -i 's/tag:.*/tag: ${{ env.COMMIT_ID }}/' ./values.yaml
+          sed -i "s/tag:.*/tag: ${{ env.COMMIT_ID }}/" ./values.yaml
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add ./values.yaml
           git commit -m "Update Helm chart with new image tag ${{ env.COMMIT_ID }}"
-          git push --set-upstream origin $BRANCH_NAME
+          git push --set-upstream origin ${{ env.BRANCH_NAME }}
 
       - name: Create Pull Request for Helm chart update
         uses: peter-evans/create-pull-request@v4
@@ -37,7 +38,7 @@ jobs:
           title: 'Update Helm chart with new image tag ${{ env.COMMIT_ID }}'
           body: 'Automated PR to update Helm chart with new image tag ${{ env.COMMIT_ID }}'
           base: main
-          head: update-helm-chart-${{ env.COMMIT_ID }}
+          head: ${{ env.BRANCH_NAME }}
           files: |
             ./values.yaml
           commit-message: 'Update Helm chart values'
