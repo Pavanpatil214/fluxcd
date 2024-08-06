@@ -53,6 +53,15 @@ jobs:
         run: |
           git branch -r | grep "origin/${{ env.BRANCH_NAME }}"
 
+      - name: Verify changes in branch
+        run: |
+          git diff origin/main...${{ env.BRANCH_NAME }}
+
+      - name: Debug: Show current branch and status
+        run: |
+          git branch
+          git status
+
       - name: Create Pull Request for Helm chart update
         uses: peter-evans/create-pull-request@v4
         with:
