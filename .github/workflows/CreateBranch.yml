@@ -20,22 +20,32 @@ jobs:
           COMMIT_ID=$(date +"%Y%m%d_%H%M%S")
           echo "COMMIT_ID=$COMMIT_ID" >> $GITHUB_ENV
 
+      - name: Configure Git
+        run: |
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+
+      - name: Pull latest changes
+        run: git pull origin ${{ github.ref_name }}
+
       - name: Create temporary branch for Helm chart update
         run: |
           BRANCH_NAME="update-helm-chart-${{ env.COMMIT_ID }}"
           git checkout -b $BRANCH_NAME
           echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
 
+
       - name: Update Helm chart values
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          sed -i "s/tag:.*/tag: ${{ env.COMMIT_ID }}/" ./values.yaml
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git add ./values.yaml
-          git commit -m "Update Helm chart with new image tag ${{ env.COMMIT_ID }}"
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} ${{ env.BRANCH_NAME }}
+            sed -i 's/tag:.*/tag: ${{ env.COMMIT_ID }}/' ./values.yaml
+
+      - name: Commit changes to values.yaml
+        env:
+            PAT: ${{ secrets.PAT_GITHUB }}
+        run: |
+            git add ./values.yaml
+            git commit -m "Update Helm chart Tag values with commit ID" || echo "No changes to commit"
+            git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} ${{ github.ref_name }}
 
       - name: Wait for branch to be available
         run: sleep 3
