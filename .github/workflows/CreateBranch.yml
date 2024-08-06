@@ -27,6 +27,8 @@ jobs:
           echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
 
       - name: Update Helm chart values
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           sed -i "s/tag:.*/tag: ${{ env.COMMIT_ID }}/" ./values.yaml
           git config user.name "github-actions"
