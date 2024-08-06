@@ -25,15 +25,11 @@ jobs:
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
 
-      - name: Pull latest changes
-        run: git pull origin ${{ github.ref_name }}
-
       - name: Create temporary branch for Helm chart update
         run: |
           BRANCH_NAME="update-helm-chart-${{ env.COMMIT_ID }}"
           git checkout -b $BRANCH_NAME
           echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
-
 
       - name: Update Helm chart values
         run: |
@@ -47,11 +43,12 @@ jobs:
             git commit -m "Update Helm chart Tag values with commit ID" || echo "No changes to commit"
             git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} ${{ github.ref_name }}
 
+
       - name: Wait for branch to be available
         run: sleep 3
 
-      - name: Fetch remote branches
-        run: git fetch origin
+      - name: Pull latest changes
+        run: git pull origin ${{ github.ref_name }}
 
       - name: Verify branch exists
         run: |
