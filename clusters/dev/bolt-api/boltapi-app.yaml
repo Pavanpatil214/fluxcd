@@ -25,5 +25,3 @@ spec:
         name: boltapi-repo
       interval: 1m
       reconcileStrategy: Revision
-      valuesFiles:
-        - dev-values.yaml
