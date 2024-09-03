@@ -25,4 +25,4 @@ spec:
         name: boltapi-repo
       interval: 1m
       valuesFiles:
-        - dev-values.yaml
+        - ./helm-chart/dev-values.yaml
