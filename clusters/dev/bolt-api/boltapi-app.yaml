@@ -4,7 +4,7 @@ metadata:
   name: boltapi-repo
   namespace: default
 spec:
-  interval: 5m0s
+  interval: 3m0s
   url: https://github.com/Pavanpatil214/fluxcd
   ref:
     branch: main
@@ -16,7 +16,7 @@ metadata:
   namespace: default
 spec:
   timeout: 10m
-  interval: 3m
+  interval: 2m
   chart:
     spec:
       chart: ./helm-chart
@@ -25,4 +25,4 @@ spec:
         name: boltapi-repo
       interval: 1m
       valuesFiles:
-        - ./helm-chart/dev-values.yaml
+        - ./dev-values.yaml
