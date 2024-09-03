@@ -1,0 +1,26 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: boltapi-repo
+spec:
+  interval: 5m0s
+  url: https://github.com/Pavanpatil214/fluxcd
+  ref:
+    branch: main
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: boltapi-helmrelease
+spec:
+  timeout: 10m
+  interval: 3m
+  chart:
+    spec:
+      chart: ./helm-chart
+      sourceRef:
+        kind: GitRepository
+        name: boltapi-repo
+      valuesFiles:
+        - dev-values.yaml
+      interval: 1m
