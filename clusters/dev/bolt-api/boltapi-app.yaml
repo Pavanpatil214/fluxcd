@@ -4,7 +4,7 @@ metadata:
   name: boltapi-repo
   namespace: default
 spec:
-  interval: 10m0s
+  interval: 5m0s
   url: https://github.com/Pavanpatil214/fluxcd
   ref:
     branch: main
@@ -16,7 +16,7 @@ metadata:
   name: bolt-helm-chart
   namespace: default
 spec:
-  interval: 10m0s
+  interval: 2m0s
   chart: ./helm-chart
   sourceRef:
     kind: GitRepository
@@ -31,11 +31,11 @@ metadata:
   namespace: default
 spec:
   timeout: 10m
-  interval: 2m
+  interval: 2m0s
   chart:
     spec:
       chart: ./helm-chart
       sourceRef:
         kind: GitRepository
         name: boltapi-repo
-      interval: 1m
+      interval: 1m0s
