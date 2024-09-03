@@ -4,7 +4,7 @@ metadata:
   name: boltapi-repo
   namespace: default
 spec:
-  interval: 3m0s
+  interval: 10m0s
   url: https://github.com/Pavanpatil214/fluxcd
   ref:
     branch: main
