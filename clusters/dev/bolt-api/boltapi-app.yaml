@@ -22,6 +22,8 @@ spec:
   sourceRef:
     kind: GitRepository
     name: boltapi-repo
+  valuesFiles:
+    - values-dev.yaml
 
 
 ---
