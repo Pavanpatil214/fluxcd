@@ -16,7 +16,7 @@ metadata:
   namespace: default
 spec:
   interval: 5m0s
-  chart: ./charts/my-helm-chart
+  chart: ./helm-chart
   sourceRef:
     kind: GitRepository
     name: boltapi-repo
