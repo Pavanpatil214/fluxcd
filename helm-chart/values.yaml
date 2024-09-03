@@ -4,15 +4,15 @@
 
 replicaCount: 1
 
-# image:
-#   repository: "mcr.microsoft.com/azuredocs/aks-helloworld"
-#   pullPolicy: Always
-#   tag: "latest"
-
 image:
-  repository: "mcr.microsoft.com/dotnet/samples"
+  repository: "mcr.microsoft.com/azuredocs/aks-helloworld"
   pullPolicy: Always
-  tag: "aspnetapp"
+  tag: "latest"
+
+# image:
+#   repository: "mcr.microsoft.com/dotnet/samples"
+#   pullPolicy: Always
+#   tag: "aspnetapp"
 
 imagePullSecrets: []
 nameOverride: ""
