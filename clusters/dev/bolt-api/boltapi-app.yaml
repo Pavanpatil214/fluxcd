@@ -4,10 +4,23 @@ metadata:
   name: boltapi-repo
   namespace: default
 spec:
-  interval: 10m0s
+  interval: 5m0s
   url: https://github.com/Pavanpatil214/fluxcd
   ref:
     branch: main
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmChart
+metadata:
+  name: bolt-HelmChart
+  namespace: default
+spec:
+  interval: 5m0s
+  chart: ./charts/my-helm-chart
+  sourceRef:
+    kind: GitRepository
+    name: boltapi-repo
+
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
@@ -15,12 +28,12 @@ metadata:
   name: boltapi-helmrelease
   namespace: default
 spec:
-  timeout: 10m
+  timeout: 5m
   interval: 2m
   chart:
     spec:
       chart: ./helm-chart
       sourceRef:
-        kind: GitRepository
-        name: boltapi-repo
+        kind: HelmChart
+        name: bolt-HelmChart
       interval: 1m
