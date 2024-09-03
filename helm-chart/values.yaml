@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: mcr.microsoft.com/azuredocs/aks-helloworld
+  repository: nginx
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "V1"
+  tag: "1.23.1"
 
 imagePullSecrets: []
 nameOverride: ""
