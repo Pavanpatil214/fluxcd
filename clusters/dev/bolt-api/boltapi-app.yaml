@@ -34,7 +34,7 @@ spec:
   interval: 2m
   chart:
     spec:
-      chart: bolt-helm-chart
+      chart: ./helm-chart
       sourceRef:
         kind: GitRepository
         name: boltapi-repo
