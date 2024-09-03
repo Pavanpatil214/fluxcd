@@ -25,4 +25,5 @@ spec:
         name: boltapi-repo
       valuesFiles:
         - dev-values.yaml
+        - values.yaml
       interval: 1m
