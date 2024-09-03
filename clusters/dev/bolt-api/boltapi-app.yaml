@@ -36,6 +36,6 @@ spec:
     spec:
       chart: bolt-helm-chart
       sourceRef:
-        kind: HelmChart
-        name: bolt-helm-chart
+        kind: GitRepository
+        name: boltapi-repo
       interval: 1m
