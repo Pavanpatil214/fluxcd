@@ -7,12 +7,12 @@
 # image:
 #   repository: "mcr.microsoft.com/azuredocs/aks-helloworld"
 #   pullPolicy: Always
-#   tag: "v1"
+#   tag: 20240904_064927
 
 image:
   repository: "mcr.microsoft.com/dotnet/samples"
   pullPolicy: Always
-  tag: "aspnetapp"
+  tag: 20240904_064927
 
 imagePullSecrets: []
 nameOverride: ""
