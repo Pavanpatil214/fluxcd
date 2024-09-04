@@ -56,6 +56,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git add ./helm-chart/values.yaml
+          git add ./helm-chart/Chart.yaml ./helm-chart/values.yaml
           git commit -m "Update Helm chart Tag values with commit ID" || echo "No changes to commit"
           git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} ${{ env.BRANCH_NAME }}
