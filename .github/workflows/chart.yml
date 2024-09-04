@@ -1,4 +1,4 @@
-name: Update Tag Branch Create
+name: Chart Update
 
 on:
   workflow_dispatch:
