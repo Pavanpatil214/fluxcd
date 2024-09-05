@@ -9,7 +9,7 @@ image:
    pullPolicy: Always
    tag: "v1"
 
-tags: "20240904_094749"
+tags: "20240905_111935"
 
 #image:
 #  repository: "mcr.microsoft.com/dotnet/samples"
