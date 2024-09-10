@@ -24,9 +24,8 @@ spec:
       sourceRef:
         kind: GitRepository
         name: boltapi-repo
-      values:
-        image:
-          repository: "mcr.microsoft.com/dotnet/samples"
-          pullPolicy: Always
-          tag: "latest"
+    values:
+      image:
+        repository: "mcr.microsoft.com/dotnet/samples"       
+        tag: "latest"
         
