@@ -24,8 +24,8 @@ spec:
         kind: GitRepository
         name: boltapi-repo
       valuesFiles:
-        - values.yaml
-        - values.dev.yaml
+        - ./helm-chart/values.yaml
+        - ./helm-chart/values.dev.yaml
   # values:
   #   image:
   #     repository: "mcr.microsoft.com/azuredocs/aks-helloworld"
