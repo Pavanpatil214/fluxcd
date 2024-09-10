@@ -23,10 +23,13 @@ spec:
       sourceRef:
         kind: GitRepository
         name: boltapi-repo
-  values:
-    image:
-      repository: "mcr.microsoft.com/azuredocs/aks-helloworld"
-      tag: "v1"
+      valuesFiles:
+        - values.yaml
+        - values.dev.yaml
+  # values:
+  #   image:
+  #     repository: "mcr.microsoft.com/azuredocs/aks-helloworld"
+  #     tag: "v1"
   # values:
   #   image:
   #     repository: "mcr.microsoft.com/dotnet/samples"

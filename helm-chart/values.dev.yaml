@@ -5,9 +5,9 @@
 # replicaCount: 1
 
 image:
-   repository: ""
+   repository: "mcr.microsoft.com/azuredocs/aks-helloworld"
    pullPolicy: Always
-   tag: ""
+   tag: "v1"
 
 tags: "20240905_111935"
 
@@ -15,11 +15,6 @@ tags: "20240905_111935"
 #  repository: "mcr.microsoft.com/azuredocs/aks-helloworld"
 #  pullPolicy: Always
 #  tag: "v1"
-# image:
-#    repository: "mcr.microsoft.com/dotnet/samples"
-#    pullPolicy: Always
-#    tag: "aspnetapp"
-
 
 imagePullSecrets: []
 nameOverride: ""
