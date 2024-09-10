@@ -5,9 +5,9 @@
 # replicaCount: 1
 
 image:
-   repository: "mcr.microsoft.com/azuredocs/aks-helloworld"
+   repository: ""
    pullPolicy: Always
-   tag: "v1"
+   tag: ""
 
 tags: "20240905_111935"
 
