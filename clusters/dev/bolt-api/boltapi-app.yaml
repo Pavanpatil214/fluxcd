@@ -24,6 +24,7 @@ spec:
         kind: GitRepository
         name: boltapi-repo
       valuesFiles:
+        - ./helm-chart/values.yaml
         - ./helm-chart/values.dev.yaml
   # values:
   #   image:
