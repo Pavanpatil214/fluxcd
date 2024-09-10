@@ -25,4 +25,4 @@ spec:
         kind: GitRepository
         name: boltapi-repo
   valuesFiles:
-    - devvalues.yaml
+    - ./devvalues.yaml
