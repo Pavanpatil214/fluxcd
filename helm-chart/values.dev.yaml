@@ -5,9 +5,9 @@
 # replicaCount: 1
 
 image:
-   repository: "mcr.microsoft.com/azuredocs/aks-helloworld"
+   repository: "mcr.microsoft.com/dotnet/samples"
    pullPolicy: Always
-   tag: "v1"
+   tag: "aspnetapp"
 
 tags: "20240905_111935"
 
