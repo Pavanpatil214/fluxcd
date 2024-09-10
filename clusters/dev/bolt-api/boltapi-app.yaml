@@ -25,6 +25,10 @@ spec:
         name: boltapi-repo
   values:
     image:
-      repository: "mcr.microsoft.com/dotnet/samples"
-      tag: "aspnetapp"
+      repository: "mcr.microsoft.com/azuredocs/aks-helloworld"
+      tag: "v1"
+  # values:
+  #   image:
+  #     repository: "mcr.microsoft.com/dotnet/samples"
+  #     tag: "aspnetapp"
         
