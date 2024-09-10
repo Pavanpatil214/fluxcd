@@ -24,5 +24,9 @@ spec:
       sourceRef:
         kind: GitRepository
         name: boltapi-repo
-      valuesFiles:
-        - ./devvalues.yaml
+      values:
+        image:
+          repository: "mcr.microsoft.com/dotnet/samples"
+          pullPolicy: Always
+          tag: "latest"
+        
