@@ -17,15 +17,14 @@ metadata:
 spec:
   timeout: 10m
   interval: 2m0s
-  reconcileStrategy: Revision
   chart:
     spec:
       chart: ./helm-chart
       sourceRef:
         kind: GitRepository
         name: boltapi-repo
-    values:
-      image:
-        repository: "mcr.microsoft.com/dotnet/samples"       
-        tag: "latest"
+  values:
+    image:
+      repository: "mcr.microsoft.com/dotnet/samples"
+      tag: "latest"
         
