@@ -1,4 +1,4 @@
 
 image:
-   repository: "mcr.microsoft.com/dotnet/samples"
-   tag: "aspnetapp"
+   repository: "mcr.microsoft.com/azuredocs/aks-helloworld"
+   tag: "v1"
