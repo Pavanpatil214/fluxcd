@@ -25,7 +25,7 @@ spec:
         name: boltapi-repo
       valuesFiles:
         - ./helm-chart/values.yaml
-        - ./helm-chart/values.dev.yaml
+        - ./helm-chart/dev-values.yaml
   # values:
   #   image:
   #     repository: "mcr.microsoft.com/azuredocs/aks-helloworld"
