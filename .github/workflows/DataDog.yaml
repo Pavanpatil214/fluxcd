@@ -1,0 +1,41 @@
+name: Install DataDog Agent on AKS
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Name of the AKS to Install DataDog Agent'
+        required: true
+        type: choice
+        options:
+          - aks-ing-blt-dev-eastus
+          - aks-ing-blt-qa-eastus
+          - aks-ing-blt-prod-eastus
+
+permissions:
+  id-token: write
+  contents: write
+
+jobs:
+  Install-DataDog-Agent:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set RESOURCE_GROUP based on environment
+        id: set-resource-group
+        run: |
+          if [ "${{ github.event.inputs.environment }}" == "aks-ing-blt-dev-eastus" ]; then
+            echo "RESOURCE_GROUP=rg-ing-blt-dev" >> $GITHUB_ENV
+          elif [ "${{ github.event.inputs.environment }}" == "aks-ing-blt-qa-eastus" ]; then
+            echo "RESOURCE_GROUP=rg-ing-blt-qa" >> $GITHUB_ENV
+          elif [ "${{ github.event.inputs.environment }}" == "aks-ing-blt-prod-eastus" ]; then
+            echo "RESOURCE_GROUP=rg-ing-blt-prod" >> $GITHUB_ENV
+          else
+            echo "Unknown environment: ${{ github.event.inputs.environment }}"
+            exit 1
+          fi
+
+      - name: Print AKS & RESOURCE_GROUP
+        run: echo "RESOURCE_GROUP is ${{ env.RESOURCE_GROUP }} & AKS is ${{ github.event.inputs.environment }}"
